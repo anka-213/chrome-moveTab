@@ -1,7 +1,7 @@
 {
-  "name": "Keyboard Pin",
+  "name": "Keyboard Move",
   "version": "0.3",
-  "description": "Creates a keyboard shortcut (Alt + Shift + P) to toggle the pinned state of the currently selected tab",
+  "description": "Creates keyboard shortcuts (Alt + Shift + Left/Right) to move currently selected tab to adjacent windows",
   "background": {
     "persistent": false,
     "scripts": ["background.js"]
@@ -10,6 +10,14 @@
     "toggle-pin": {
       "suggested_key": { "default": "Alt+Shift+P" },
       "description": "Toggle tab pin"
+    },
+    "move-left": {
+      "suggested_key": { "default": "Alt+Shift+Left" },
+      "description": "Move tab one window left"
+    },
+    "move-right": {
+      "suggested_key": { "default": "Alt+Shift+Right" },
+      "description": "Move tab one window right"
     }
   },
   "manifest_version": 2
