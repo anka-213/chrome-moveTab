@@ -1,5 +1,5 @@
 {
-  "name": "Keyboard Tab Move",
+  "name": "Keyboard Tab Mover",
   "version": "0.1",
   "description": "Creates keyboard shortcuts (Alt + Shift + Left/Right) to move currently selected tab to adjacent windows",
   "background": {
