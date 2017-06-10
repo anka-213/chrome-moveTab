@@ -8,7 +8,16 @@
 function toPromise(fun, ...args){
     return new Promise((resolve,_err)=> fun(...args, resolve));
 }
+function toPromise(fun, ...args){
+    return new Promise((resolve,reject)=> fun(...args, chromeCallback(resolve,reject)));
+}
 
+function chromeCallback(resolve, reject) {
+  return (...args) =>
+    chrome.runtime.lastError
+     ? reject(chrome.runtime.lastError)
+     : resolve(...args)
+}
 Function.prototype.toPromise = function(...args){
     return toPromise(this, ...args);
 };
@@ -63,16 +72,24 @@ chrome.commands.onCommand.addListener(function(command) {
     spawn(function*() {
       let tabs = yield chrome.tabs.query.toPromise({active: true, currentWindow: true});
       let current = tabs[0];
+      if (!current) {
+        console.warn("No current tab");
+        return;
+      }
       // console.table(tabs);
-      
+
+      // when moving right, return true if b is to the right of a
+      let inOrder = (a, b) => cmdDir[command]*(a[cmdAxis[command]] - b[cmdAxis[command]])
+
       let windows = yield chrome.windows.getAll.toPromise(null);
-      windows = windows.filter(x=> x.state == "normal").sort((a,b)=> a.left- b.left);
+      let currentWin = windows.find(w => current.windowId == w.id);
+      windows = windows.filter(x => x.state == "normal" && inOrder(x, currentWin)>0)
+                       .sort(inOrder);
       // console.table(windows);
 
-      let iCurrentWin = windows.findIndex(w => current.windowId == w.id);
-      let nextWin = windows[iCurrentWin + cmdDir[command]];
+      let nextWin = windows[0];
       if (!nextWin) {
-        console.log("No such window");
+        console.log("No available window to the "+command.replace("move-",""));
         return;
       }
       yield chrome.tabs.move.toPromise(current.id, {windowId: nextWin.id, index: -1});

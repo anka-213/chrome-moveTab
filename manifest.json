@@ -8,7 +8,6 @@
   },
   "commands": {
     "toggle-pin": {
-      "suggested_key": { "default": "Alt+Shift+P" },
       "description": "Toggle tab pin"
     },
     "move-left": {
@@ -18,7 +17,18 @@
     "move-right": {
       "suggested_key": { "default": "Alt+Shift+Right" },
       "description": "Move tab one window right"
+    },
+    "move-up": {
+      "suggested_key": { "default": "Alt+Shift+Up" },
+      "description": "Move tab one window up"
+    },
+    "move-down": {
+      "suggested_key": { "default": "Alt+Shift+Down" },
+      "description": "Move tab one window down"
     }
   },
+  "permissions": [
+      "storage"
+  ],
   "manifest_version": 2
 }
