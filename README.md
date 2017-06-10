@@ -1,6 +1,6 @@
 # Keyboard Tab Mover - Chrome Extension
 
-Adds keyboard shortcuts (Ctrl+Shift+Left/Right/Up/Down) for moving tabs
+Adds keyboard shortcuts (by default Ctrl+Left/Right/Up/Down) for moving tabs
 between windows. Very useful when using a tiled window manager.
 
 ## Screenshots
