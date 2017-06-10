@@ -1,3 +1,4 @@
+// Copyright (c) 2012 The Chrome Authors. All rights reserved.
 // Copyright (c) 2016 Andreas Källberg. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -61,14 +62,7 @@ const cmdDir = {"move-left": -1, "move-right": 1, "move-up": -1, "move-down": 1}
 const cmdAxis = {"move-left": "left", "move-right": "left", "move-up": "top", "move-down": "top"};
 
 chrome.commands.onCommand.addListener(function(command) {
-  if (command == "toggle-pin") {
-    // Get the currently selected tab
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-      // Toggle the pinned status
-      var current = tabs[0];
-      chrome.tabs.update(current.id, {'pinned': !current.pinned});
-    });
-  } else if (cmdDir[command]) {
+  if (cmdDir[command]) {
     spawn(function*() {
       let tabs = yield chrome.tabs.query.toPromise({active: true, currentWindow: true});
       let current = tabs[0];

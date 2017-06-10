@@ -7,9 +7,6 @@
     "scripts": ["background.js"]
   },
   "commands": {
-    "toggle-pin": {
-      "description": "Toggle tab pin"
-    },
     "move-left": {
       "suggested_key": { "default": "Alt+Shift+Left" },
       "description": "Move tab one window left"
