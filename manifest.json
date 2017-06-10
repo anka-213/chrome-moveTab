@@ -1,11 +1,14 @@
 {
-  "name": "Keyboard Move",
-  "version": "0.3",
+  "name": "Keyboard Tab Move",
+  "version": "0.1",
   "description": "Creates keyboard shortcuts (Alt + Shift + Left/Right) to move currently selected tab to adjacent windows",
   "background": {
     "persistent": false,
     "scripts": ["background.js"]
   },
+  "icons": { "16": "icon16.png",
+             "48": "icon48.png",
+            "128": "icon128.png" },
   "commands": {
     "move-left": {
       "suggested_key": { "default": "Alt+Shift+Left" },
