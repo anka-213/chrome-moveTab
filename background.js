@@ -83,7 +83,12 @@ chrome.commands.onCommand.addListener(function(command) {
 
       let nextWin = windows[0];
       if (!nextWin) {
-        console.log("No available window to the "+command.replace("move-",""));
+          yield createNewWindow(current, "normal", {
+              left: currentWin.left ?? 0,
+              top: currentWin.top ?? 0,
+              width: currentWin.width ?? screen.availWidth,
+              height: currentWin.height ?? screen.availHeight,
+          }, false, true)
         return;
       }
       yield chrome.tabs.move.toPromise(current.id, {windowId: nextWin.id, index: -1});

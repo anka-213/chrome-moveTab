@@ -4,7 +4,7 @@
   "description": "Creates keyboard shortcuts (Ctrl + Left/Right/Up/Down) to move currently selected tab to adjacent windows",
   "background": {
     "persistent": false,
-    "scripts": ["background.js"]
+    "scripts": ["background.js", "createNewWindow.js"]
   },
   "icons": { "16": "icon16.png",
              "48": "icon48.png",
