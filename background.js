@@ -88,7 +88,7 @@ chrome.commands.onCommand.addListener(function(command) {
       }
       yield chrome.tabs.move.toPromise(current.id, {windowId: nextWin.id, index: -1});
 
-      chrome.tabs.update(current.id, {active: true});
+      chrome.tabs.update(current.id, {active: true, pinned: current.pinned});
       // chrome.windows.update(nextWin.id, {focused: true});
 
     }).catch(e => console.error(e));
